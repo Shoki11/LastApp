@@ -92,7 +92,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     /// hairModelの髪色選択ボタン
-    @IBAction func tappedHairColorButton(_ sender: Any) {
+    @IBAction private func tappedHairColorButton(_ sender: UIButton) {
         showColorPicker()
     }
     
