@@ -44,12 +44,16 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         /// anchorのインスタンス(ARモデルを固定する錨)
         let anchor = AnchorEntity()
         /// usdzModlを格納する
-        let hairModel = ModelEntity()
+        var hairModel = ModelEntity()
         // anchorの位置を設定
         anchor.position = simd_make_float3(0, -1.2, 0)
-        // ModelEntitiyにusdzModelを適応
-        if let usdzModel = try? Entity.load(named: HairModel[number]) {
-            hairModel.addChild(usdzModel)
+        // usdzを読み込む
+        hairModel = try! Entity.loadModel(named: HairModel[number])
+        // usdzのマテリアルの数だけ貼り付ける
+        for index in 0 ..< hairModel.model!.mesh.expectedMaterialCount {
+            // 青色、粗さ0、メタリックのシンプルなマテリアル
+            let material = SimpleMaterial(color: .blue, roughness: 0, isMetallic: false)
+            hairModel.model?.materials[index] = material
         }
         // ModelEntitiyに衝突形状をインストール
         hairModel.generateCollisionShapes(recursive: true)
