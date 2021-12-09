@@ -36,19 +36,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         arView.frame = CGRect(x: 0, y: 0, width: width, height: UIScreen.main.bounds.height/1.4);
         self.view.addSubview(arView)
         showModel(number: 0)
-        
-        let lightEntity = SpotLight()
-        let lightAnchor = AnchorEntity(plane: .horizontal)
-        lightEntity.light.color = .red
-        lightEntity.light.intensity = 3000
-        lightEntity.look(at: [0,0,0], from: [0,0.05,0.3], relativeTo: lightAnchor)
-        lightEntity.shadow = SpotLightComponent.Shadow() // デフォルトではシャドウがない
-        // 以下デフォルト値
-        lightEntity.light.innerAngleInDegrees = 45
-        lightEntity.light.outerAngleInDegrees = 60 // これら２つでスポットライトの円の広さと集中度が決まるはず
-        lightEntity.light.attenuationRadius = 10
-        lightAnchor.addChild(lightEntity)
-        arView.scene.anchors.append(lightAnchor)
     }
     /// 3DModel表示
     private func showModel(number: Int) {
