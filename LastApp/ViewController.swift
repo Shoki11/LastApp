@@ -31,13 +31,20 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUP()
+        setUp()
         setUpHairModelListCollectionView(hairModelListCollectionView)
         
         
         arView.frame = CGRect(x: 0, y: 0, width: width, height: UIScreen.main.bounds.height/1.4);
         self.view.addSubview(arView)
         showModel(id: modelID)
+    }
+    /// 初期設定
+    private func setUp() {
+        colorPicker.delegate = self
+        colorPicker.supportsAlpha = false
+        self.dismissStackView.isHidden = true
+        self.hairModelListCollectionView.isHidden = true
     }
     /// usdzModel表示
     private func showModel(id: Int) {
@@ -89,13 +96,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         // ARViewにアンカーの追加
         arView.scene.anchors.append(anchor)
     }
-    /// 初期設定
-    private func setUP() {
-        colorPicker.delegate = self
-        self.dismissStackView.isHidden = true
-        self.hairModelListCollectionView.isHidden = true
-    }
-
     /// HairModelListCollectionViewの設定
     private func setUpHairModelListCollectionView(_ collectionView: UICollectionView) {
         hairModelListCollectionView.dataSource = self
