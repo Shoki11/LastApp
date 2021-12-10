@@ -89,33 +89,27 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
 }
 
 extension ViewController {
-    
+    /// HairModelの画像を表示するレイアウト
+    /// - Returns: HairModelの画像を表示するレイアウト
     private func createHairModelCellLayout() -> UICollectionViewLayout {
-        
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                               heightDimension: .fractionalHeight(1.0))
-        
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.3),
                                                heightDimension: .fractionalHeight(1.0))
-        
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
-        
         // 個々のカラムのスペース
         let spacing = CGFloat(0)
-        
         group.interItemSpacing = .fixed(spacing)
         
         let section = NSCollectionLayoutSection(group: group)
-        
         section.interGroupSpacing = spacing
+        // 横スクロール
         section.orthogonalScrollingBehavior = .continuous
         
         let layout = UICollectionViewCompositionalLayout(section: section)
-        
+
         return layout
-        
     }
     
     /// usdzModel表示
