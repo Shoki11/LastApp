@@ -34,12 +34,9 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
         
         setUp()
-        setUpHairModelListCollectionView(hairModelListCollectionView)
-        
-        
-        arView.frame = CGRect(x: 0, y: 0, width: width, height: UIScreen.main.bounds.height/1.4);
-        self.view.addSubview(arView)
+        setUpARView()
         showModel(id: modelID)
+        setUpHairModelListCollectionView(hairModelListCollectionView)
     }
     /// 初期設定
     private func setUp() {
@@ -48,35 +45,10 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         self.dismissStackView.isHidden = true
         self.hairModelListCollectionView.isHidden = true
     }
-    /// usdzModel表示
-    private func showModel(id: Int) {
-        // ARViewのアンカーの削除
-        arView.scene.anchors.removeAll()
-        /// anchorのインスタンス(ARモデルを固定する錨)
-        let anchor = AnchorEntity()
-        // anchorの位置を設定
-        anchor.position = simd_make_float3(0, -1.2, 0)
-        // modelのidを格納
-        modelID = id
-        // usdzを読み込む
-        hairModel = try! Entity.loadModel(named: HairModel[modelID])
-        // ModelEntitiyに衝突形状をインストール
-        hairModel.generateCollisionShapes(recursive: true)
-        // ARViewにジェスチャーをインストール
-        arView.installGestures(.all, for: hairModel)
-        // アンカーの子階層にusdzModelを加える
-        anchor.addChild(hairModel)
-        // ARViewにアンカーの追加
-        arView.scene.anchors.append(anchor)
-    }
-    /// usdzModelの色変更
-    private func changeModelColor(color: UIColor) {
-        // usdzのマテリアルの数だけ貼り付ける
-        for index in 0 ..< hairModel.model!.mesh.expectedMaterialCount {
-            // 青色、粗さ0、メタリックのシンプルなマテリアル
-            let material = SimpleMaterial(color: color, roughness: 0, isMetallic: false)
-            hairModel.model?.materials[index] = material
-        }
+    /// ARViewの設定
+    private func setUpARView() {
+        arView.frame = CGRect(x: 0, y: 0, width: width, height: UIScreen.main.bounds.height/1.4);
+        self.view.addSubview(arView)
     }
     /// HairModelListCollectionViewの設定
     private func setUpHairModelListCollectionView(_ collectionView: UICollectionView) {
@@ -86,7 +58,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                                              forCellWithReuseIdentifier: HairModelCell.reuseIdentifier)
         hairModelListCollectionView.collectionViewLayout = createHairModelCellLayout()
     }
-    
     /// hairModel選択ボタン
     @IBAction private func tappedHairStyleButton(_ sender: UIButton) {
         self.dismissStackView.isHidden = false
@@ -101,12 +72,10 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             self.dismissStackView.alpha = 1.0
         }, completion: nil)
     }
-    
     /// hairModelの髪色選択ボタン
     @IBAction private func tappedHairColorButton(_ sender: UIButton) {
         showColorPicker()
     }
-    
     /// Xボタン
     @IBAction private func tappedDismissButton(_ sender: UIButton) {
         UIView.animate(withDuration: 0.3) {
@@ -145,6 +114,38 @@ extension ViewController {
         
         return layout
         
+    }
+    
+    /// usdzModel表示
+    private func showModel(id: Int) {
+        // ARViewのアンカーの削除
+        arView.scene.anchors.removeAll()
+        /// anchorのインスタンス(ARモデルを固定する錨)
+        let anchor = AnchorEntity()
+        // anchorの位置を設定
+        anchor.position = simd_make_float3(0, -1.2, 0)
+        // modelのidを格納
+        modelID = id
+        // usdzを読み込む
+        hairModel = try! Entity.loadModel(named: HairModel[modelID])
+        // ModelEntitiyに衝突形状をインストール
+        hairModel.generateCollisionShapes(recursive: true)
+        // ARViewにジェスチャーをインストール
+        arView.installGestures(.all, for: hairModel)
+        // アンカーの子階層にusdzModelを加える
+        anchor.addChild(hairModel)
+        // ARViewにアンカーの追加
+        arView.scene.anchors.append(anchor)
+    }
+    
+    /// usdzModelの色変更
+    private func changeModelColor(color: UIColor) {
+        // usdzのマテリアルの数だけ貼り付ける
+        for index in 0 ..< hairModel.model!.mesh.expectedMaterialCount {
+            // 青色、粗さ0、メタリックのシンプルなマテリアル
+            let material = SimpleMaterial(color: color, roughness: 0, isMetallic: false)
+            hairModel.model?.materials[index] = material
+        }
     }
     
     /// UIColorPickerを呼び出す
