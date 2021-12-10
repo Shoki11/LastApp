@@ -89,6 +89,10 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         arView.installGestures(.all, for: hairModel)
         // アンカーの子階層にusdzModelを加える
         anchor.addChild(hairModel)
+        /// usdzModelの角度
+        let degree: Float = 10 * 180 / .pi
+        /// y軸にdegree分回転
+        anchor.orientation = simd_quatf(angle: degree, axis: [0,1,0])
         // ARViewにアンカーの追加
         arView.scene.anchors.append(anchor)
     }
