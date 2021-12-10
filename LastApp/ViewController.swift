@@ -25,6 +25,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     private let colorPicker = UIColorPickerViewController()
     /// ARViewのインスタンス
     private let arView = ARView()
+    /// usdzModlを格納する
+    private var hairModel = ModelEntity()
     /// Modelのidを保持
     private var modelID = 0
     
@@ -52,8 +54,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         arView.scene.anchors.removeAll()
         /// anchorのインスタンス(ARモデルを固定する錨)
         let anchor = AnchorEntity()
-        /// usdzModlを格納する
-        var hairModel = ModelEntity()
         // anchorの位置を設定
         anchor.position = simd_make_float3(0, -1.2, 0)
         // modelのidを格納
@@ -71,30 +71,12 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     /// usdzModelの色変更
     private func changeModelColor(color: UIColor) {
-        // ARViewのアンカーの削除
-        arView.scene.anchors.removeAll()
-        /// anchorのインスタンス(ARモデルを固定する錨)
-        let anchor = AnchorEntity()
-        /// usdzModlを格納する
-        var hairModel = ModelEntity()
-        // anchorの位置を設定
-        anchor.position = simd_make_float3(0, -1.2, 0)
-        // usdzを読み込む
-        hairModel = try! Entity.loadModel(named: HairModel[modelID])
         // usdzのマテリアルの数だけ貼り付ける
         for index in 0 ..< hairModel.model!.mesh.expectedMaterialCount {
             // 青色、粗さ0、メタリックのシンプルなマテリアル
             let material = SimpleMaterial(color: color, roughness: 0, isMetallic: false)
             hairModel.model?.materials[index] = material
         }
-        // ModelEntitiyに衝突形状をインストール
-        hairModel.generateCollisionShapes(recursive: true)
-        // ARViewにジェスチャーをインストール
-        arView.installGestures(.all, for: hairModel)
-        // アンカーの子階層にusdzModelを加える
-        anchor.addChild(hairModel)
-        // ARViewにアンカーの追加
-        arView.scene.anchors.append(anchor)
     }
     /// HairModelListCollectionViewの設定
     private func setUpHairModelListCollectionView(_ collectionView: UICollectionView) {
