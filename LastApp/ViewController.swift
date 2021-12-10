@@ -9,12 +9,16 @@ import UIKit
 import RealityKit
 
 class ViewController: UIViewController, UIGestureRecognizerDelegate {
+    
+    // MARK: - @IBOutlets
     /// 二つのボタンが配置されているStackView
     @IBOutlet private weak var HairCustomStackView: UIStackView!
     /// バツボタンのStackView
     @IBOutlet private weak var dismissStackView: UIStackView!
     /// モデル一覧を表示するCollecionView
     @IBOutlet private weak var hairModelListCollectionView: UICollectionView!
+
+    // MARK: - Propetys
     /// モデルの写真一覧を格納する配列
     private let HairModelList = ["palette48","face48","back48", "palette36", "palette24"]
     /// モデルの一覧を格納する配列
@@ -32,6 +36,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     /// Modelのidを保持
     private var modelID = 0
     
+    // MARK: - Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -104,6 +109,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         self.present(colorPicker, animated: true, completion: nil)
     }
     
+    // MARK: - IBActions
     /// hairModel選択ボタン
     @IBAction private func tappedHairStyleButton(_ sender: UIButton) {
         self.dismissStackView.isHidden = false
@@ -132,6 +138,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     }
 }
 
+// MARK: - Layout
 extension ViewController {
     /// HairModelの画像を表示するレイアウト
     /// - Returns: HairModelの画像を表示するレイアウト
@@ -157,6 +164,7 @@ extension ViewController {
     }
 }
 
+// MARK: - UICollectionViewDataSource
 extension ViewController: UICollectionViewDataSource {
     // セルの数を返す
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -174,6 +182,7 @@ extension ViewController: UICollectionViewDataSource {
     }
 }
 
+// MARK: - UIColorPickerViewControllerDelegate
 extension ViewController: UIColorPickerViewControllerDelegate {
     // 色を選択したときの処理
     func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
@@ -184,5 +193,6 @@ extension ViewController: UIColorPickerViewControllerDelegate {
     }
 }
 
+// MARK: - UICollectionViewDelegate
 extension ViewController: UICollectionViewDelegate {
 }
