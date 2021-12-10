@@ -21,6 +21,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     private let HairModel = ["face", "hair"]
     /// 画面幅
     private let width = UIScreen.main.bounds.width
+    /// 画面の高さ
+    private let height = UIScreen.main.bounds.height/1.4
     /// UIColorPickerViewControllerのインスタンス
     private let colorPicker = UIColorPickerViewController()
     /// ARViewのインスタンス
@@ -47,7 +49,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     /// ARViewの設定
     private func setUpARView() {
-        arView.frame = CGRect(x: 0, y: 0, width: width, height: UIScreen.main.bounds.height/1.4);
+        arView.frame = CGRect(x: 0, y: 0, width: width, height: height);
         self.view.addSubview(arView)
     }
     /// HairModelListCollectionViewの設定
