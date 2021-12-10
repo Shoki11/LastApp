@@ -84,7 +84,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         hairModelListCollectionView.delegate   = self
         hairModelListCollectionView.register(UINib(nibName: HairModelCell.reuseIdentifier, bundle: nil),
                                              forCellWithReuseIdentifier: HairModelCell.reuseIdentifier)
-        hairModelListCollectionView.collectionViewLayout = createFloorDetailCellLayout()
+        hairModelListCollectionView.collectionViewLayout = createHairModelCellLayout()
     }
     
     /// hairModel選択ボタン
@@ -119,7 +119,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
 
 extension ViewController {
     
-    private func createFloorDetailCellLayout() -> UICollectionViewLayout {
+    private func createHairModelCellLayout() -> UICollectionViewLayout {
         
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                               heightDimension: .fractionalHeight(1.0))
