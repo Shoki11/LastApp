@@ -8,7 +8,7 @@
 import UIKit
 import RealityKit
 
-class ViewController: UIViewController, UIGestureRecognizerDelegate {
+class ViewController: UIViewController {
     
     // MARK: - @IBOutlets
     /// 二つのボタンが配置されているStackView
@@ -91,7 +91,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         anchor.addChild(hairModel)
         /// usdzModelの角度
         let degree: Float = 10 * 180 / .pi
-        /// y軸にdegree分回転
+        // y軸にdegree分回転
         anchor.orientation = simd_quatf(angle: degree, axis: [0,1,0])
         // ARViewにアンカーの追加
         arView.scene.anchors.append(anchor)
