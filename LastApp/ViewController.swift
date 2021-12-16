@@ -103,7 +103,6 @@ class ViewController: UIViewController {
         }
         // ARViewにアンカーの追加
         arView.scene.anchors.append(anchor)
-        
     }
     
     /// usdzModelの色変更
@@ -150,6 +149,8 @@ class ViewController: UIViewController {
     /// hairModelの髪色選択ボタン
     @IBAction private func tappedHairColorButton(_ sender: UIButton) {
         showColorPicker()
+    }
+    @IBAction private func tappedModelRotation(_ sender: UIButton) {
     }
     /// Xボタン
     @IBAction private func tappedDismissButton(_ sender: UIButton) {

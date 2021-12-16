@@ -23,7 +23,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="avd-FN-sVW">
-                                                <rect key="frame" x="0.0" y="0.0" width="207" height="48"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="138" height="48"/>
                                                 <color key="tintColor" red="0.0" green="1" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" image="face48"/>
                                                 <connections>
@@ -31,11 +31,19 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fOC-gY-LlK">
-                                                <rect key="frame" x="207" y="0.0" width="207" height="48"/>
+                                                <rect key="frame" x="138" y="0.0" width="138" height="48"/>
                                                 <color key="tintColor" red="0.0" green="1" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" image="palette48"/>
                                                 <connections>
                                                     <action selector="tappedHairColorButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sa6-qU-8H9"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b8i-PB-WvK">
+                                                <rect key="frame" x="276" y="0.0" width="138" height="48"/>
+                                                <color key="tintColor" red="0.0" green="1" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" image="rotation48"/>
+                                                <connections>
+                                                    <action selector="tappedModelRotation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5mj-Db-VET"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -105,5 +113,6 @@
         <image name="back48" width="48" height="48"/>
         <image name="face48" width="48" height="48"/>
         <image name="palette48" width="48" height="48"/>
+        <image name="rotation48" width="48" height="48"/>
     </resources>
 </document>
