@@ -31,6 +31,8 @@ class ViewController: UIViewController {
     private let colorPicker = UIColorPickerViewController()
     /// ARViewのインスタンス
     private let arView = ARView()
+    /// マネキンのモデルを格納する
+    private var faceModel = ModelEntity()
     /// usdzModlを格納する
     private var hairModel = ModelEntity()
     /// Modelのidを保持
@@ -77,34 +79,51 @@ class ViewController: UIViewController {
         arView.scene.anchors.removeAll()
         /// anchorのインスタンス(ARモデルを固定する錨)
         let anchor = AnchorEntity()
-        // anchorの位置を設定
-        anchor.position = simd_make_float3(0, -1.2, 0)
-        // modelのidを格納
-        modelID = id
-        // usdzを読み込む
-        hairModel = try! Entity.loadModel(named: HairModel[modelID])
-        // ModelEntitiyに衝突形状をインストール
-        hairModel.generateCollisionShapes(recursive: true)
-        // ARViewにジェスチャーをインストール
-        arView.installGestures(.all, for: hairModel)
-        // アンカーの子階層にusdzModelを加える
-        anchor.addChild(hairModel)
         /// usdzModelの角度
         let degree: Float = 10 * 180 / .pi
+        // anchorの位置を設定
+        anchor.position = simd_make_float3(0, -1.2, 0)
         // y軸にdegree分回転
         anchor.orientation = simd_quatf(angle: degree, axis: [0,1,0])
+        // modelのidを格納
+        modelID = id
+        
+        if id == 0 {
+            // usdzを読み込む
+            faceModel = try! Entity.loadModel(named: "face")
+            // アンカーの子階層にusdzModelを加える
+            anchor.addChild(faceModel)
+        } else {
+            // usdzを読み込む
+            faceModel = try! Entity.loadModel(named: "face")
+            hairModel = try! Entity.loadModel(named: HairModel[modelID])
+            // アンカーの子階層にusdzModelを加える
+            anchor.addChild(faceModel)
+            anchor.addChild(hairModel)
+        }
         // ARViewにアンカーの追加
         arView.scene.anchors.append(anchor)
+        
     }
     
     /// usdzModelの色変更
     /// - Parameter color: 設定したい色
-    private func changeModelColor(color: UIColor) {
-        // usdzのマテリアルの数だけ貼り付ける
-        for index in 0 ..< hairModel.model!.mesh.expectedMaterialCount {
-            // 青色、粗さ0、メタリックのシンプルなマテリアル
-            let material = SimpleMaterial(color: color, roughness: 0, isMetallic: false)
-            hairModel.model?.materials[index] = material
+    /// - Parameter id: HairModelのid
+    private func changeModelColor(id: Int, color: UIColor) {
+        if id == 0 {
+            // usdzのマテリアルの数だけ貼り付ける
+            for index in 0 ..< faceModel.model!.mesh.expectedMaterialCount {
+                // 色、粗さ0、メタリックのシンプルなマテリアル
+                let material = SimpleMaterial(color: color, roughness: 0, isMetallic: false)
+                faceModel.model?.materials[index] = material
+            }
+        } else {
+            // usdzのマテリアルの数だけ貼り付ける
+            for index in 0 ..< hairModel.model!.mesh.expectedMaterialCount {
+                // 色、粗さ0、メタリックのシンプルなマテリアル
+                let material = SimpleMaterial(color: color, roughness: 0, isMetallic: false)
+                hairModel.model?.materials[index] = material
+            }
         }
     }
     
@@ -190,7 +209,7 @@ extension ViewController: UICollectionViewDataSource {
 extension ViewController: UIColorPickerViewControllerDelegate {
     // 色を選択したときの処理
     func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
-        changeModelColor(color: viewController.selectedColor)
+        changeModelColor(id: modelID, color: viewController.selectedColor)
     }
     // カラーピッカーを閉じたときの処理
     func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
