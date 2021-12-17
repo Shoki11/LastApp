@@ -102,6 +102,7 @@
                         <outlet property="HairCustomStackView" destination="Hhb-3a-zBX" id="lrV-ou-Zlb"/>
                         <outlet property="dismissStackView" destination="AZA-MY-4Nw" id="z94-FA-UcN"/>
                         <outlet property="hairModelListCollectionView" destination="UkB-Ff-Ljb" id="h3j-1H-oaU"/>
+                        <outlet property="rotationButton" destination="b8i-PB-WvK" id="2Rc-rN-EaV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

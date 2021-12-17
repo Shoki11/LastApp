@@ -15,12 +15,14 @@ class ViewController: UIViewController {
     @IBOutlet private weak var HairCustomStackView: UIStackView!
     /// バツボタンのStackView
     @IBOutlet private weak var dismissStackView: UIStackView!
+    /// Model回転のボタン
+    @IBOutlet private weak var rotationButton: UIButton!
     /// モデル一覧を表示するCollecionView
     @IBOutlet private weak var hairModelListCollectionView: UICollectionView!
-
+    
     // MARK: - Propetys
     /// モデルの写真一覧を格納する配列
-    private let HairModelList = ["palette48","face48","back48", "palette36", "palette24"]
+    private let HairModelList = ["palette48","face48","back48", "rotation48", "palette24"]
     /// モデルの一覧を格納する配列
     private let HairModel = ["face", "hair"]
     /// 画面幅
@@ -35,6 +37,8 @@ class ViewController: UIViewController {
     private var faceModel = ModelEntity()
     /// usdzModlを格納する
     private var hairModel = ModelEntity()
+    /// anchorのインスタンス
+    private var passAnchor = AnchorEntity()
     /// Modelのidを保持
     private var modelID = 0
     
@@ -82,7 +86,7 @@ class ViewController: UIViewController {
         /// usdzModelの角度
         let degree: Float = 10 * 180 / .pi
         // anchorの位置を設定
-        anchor.position = simd_make_float3(0, -1.2, 0)
+        anchor.position = simd_make_float3(0.01, -1.05, 0.2)
         // y軸にdegree分回転
         anchor.orientation = simd_quatf(angle: degree, axis: [0,1,0])
         // modelのidを格納
@@ -103,11 +107,13 @@ class ViewController: UIViewController {
         }
         // ARViewにアンカーの追加
         arView.scene.anchors.append(anchor)
+        // 回転メソッドに渡すanchorに格納
+        passAnchor = anchor
     }
     
     /// usdzModelの色変更
-    /// - Parameter color: 設定したい色
     /// - Parameter id: HairModelのid
+    /// - Parameter color: 設定したい色
     private func changeModelColor(id: Int, color: UIColor) {
         if id == 0 {
             // usdzのマテリアルの数だけ貼り付ける
@@ -131,6 +137,27 @@ class ViewController: UIViewController {
         self.present(colorPicker, animated: true, completion: nil)
     }
     
+    /// usdzModelの回転
+    /// - Parameter anchor: 回転したいanchor
+    private func rotationAnchor(anchor: AnchorEntity) {
+        // rotationButtonを非活性
+        rotationButton.isEnabled = false
+        /// 回す角度
+        let rotation: Float = .pi / 180 * -180
+        // Y軸で180°回転する
+        anchor.move(to: Transform(pitch: 0, yaw: rotation, roll: 0), relativeTo: anchor, duration: 7)
+        // 5.6秒後に実行
+        DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
+            // Y軸で180°回転する
+            anchor.move(to: Transform(pitch: 0, yaw: rotation, roll: 0), relativeTo: anchor, duration: 7)
+            // 5.6秒後に実行
+            DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
+                // rotationButoonを活性
+                self.rotationButton.isEnabled = true
+            }
+        }
+    }
+    
     // MARK: - IBActions
     /// hairModel選択ボタン
     @IBAction private func tappedHairStyleButton(_ sender: UIButton) {
@@ -150,7 +177,9 @@ class ViewController: UIViewController {
     @IBAction private func tappedHairColorButton(_ sender: UIButton) {
         showColorPicker()
     }
+    /// usdzModelの回転
     @IBAction private func tappedModelRotation(_ sender: UIButton) {
+        rotationAnchor(anchor: passAnchor)
     }
     /// Xボタン
     @IBAction private func tappedDismissButton(_ sender: UIButton) {
@@ -183,7 +212,7 @@ extension ViewController {
         section.orthogonalScrollingBehavior = .continuous
         
         let layout = UICollectionViewCompositionalLayout(section: section)
-
+        
         return layout
     }
 }
