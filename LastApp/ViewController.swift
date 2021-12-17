@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     
     // MARK: - Propetys
     /// モデルの写真一覧を格納する配列
-    private let HairModelList = ["palette48","face48","back48", "rotation48", "palette24"]
+    private let HairModelList = ["palette48","face48","back48", "rotation48", "palette24", "palette36"]
     /// モデルの一覧を格納する配列
     private let HairModel = ["face", "hair"]
     /// 画面幅
@@ -39,6 +39,10 @@ class ViewController: UIViewController {
     private var hairModel = ModelEntity()
     /// anchorのインスタンス
     private var passAnchor = AnchorEntity()
+    /// faceModelのマテリアル
+    private var faceMaterial = SimpleMaterial(color: .white, roughness: 0.35, isMetallic: false)
+    /// hairModelのマテリアル
+    private var hairMaterial = SimpleMaterial(color: .black, roughness: 0.35, isMetallic: false)
     /// Modelのidを保持
     private var modelID = 0
     
@@ -95,12 +99,24 @@ class ViewController: UIViewController {
         if id == 0 {
             // usdzを読み込む
             faceModel = try! Entity.loadModel(named: "face")
+            // マネキンのusdzのマテリアルの数だけ貼り付ける
+            for index in 0 ..< faceModel.model!.mesh.expectedMaterialCount {
+                faceModel.model?.materials[index] = faceMaterial
+            }
             // アンカーの子階層にusdzModelを加える
             anchor.addChild(faceModel)
         } else {
             // usdzを読み込む
             faceModel = try! Entity.loadModel(named: "face")
             hairModel = try! Entity.loadModel(named: HairModel[modelID])
+            // マネキンのusdzのマテリアルの数だけ貼り付ける
+            for index in 0 ..< faceModel.model!.mesh.expectedMaterialCount {
+                faceModel.model?.materials[index] = faceMaterial
+            }
+            // 髪型のusdzのマテリアルの数だけ貼り付ける
+            for index in 0 ..< hairModel.model!.mesh.expectedMaterialCount {
+                hairModel.model?.materials[index] = hairMaterial
+            }
             // アンカーの子階層にusdzModelを加える
             anchor.addChild(faceModel)
             anchor.addChild(hairModel)
@@ -119,15 +135,19 @@ class ViewController: UIViewController {
             // usdzのマテリアルの数だけ貼り付ける
             for index in 0 ..< faceModel.model!.mesh.expectedMaterialCount {
                 // 色、粗さ0、メタリックのシンプルなマテリアル
-                let material = SimpleMaterial(color: color, roughness: 0, isMetallic: false)
+                let material = SimpleMaterial(color: color, roughness: 0.35, isMetallic: false)
                 faceModel.model?.materials[index] = material
+                // 選択した色を記録
+                faceMaterial = material
             }
         } else {
             // usdzのマテリアルの数だけ貼り付ける
             for index in 0 ..< hairModel.model!.mesh.expectedMaterialCount {
                 // 色、粗さ0、メタリックのシンプルなマテリアル
-                let material = SimpleMaterial(color: color, roughness: 0, isMetallic: false)
+                let material = SimpleMaterial(color: color, roughness: 0.35, isMetallic: false)
                 hairModel.model?.materials[index] = material
+                // 選択した色を記録
+                hairMaterial = material
             }
         }
     }
