@@ -262,10 +262,8 @@ extension ViewController: UIColorPickerViewControllerDelegate {
         changeModelColor(id: modelID, color: viewController.selectedColor)
     }
     // カラーピッカーを閉じたときの処理
-    func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
-    }
+    func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {}
 }
 
 // MARK: - UICollectionViewDelegate
-extension ViewController: UICollectionViewDelegate {
-}
+extension ViewController: UICollectionViewDelegate {}
