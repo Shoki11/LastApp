@@ -184,7 +184,7 @@ class ViewController: UIViewController {
         self.dismissStackView.isHidden = false
         self.hairModelListCollectionView.isHidden = false
         self.HairCustomStackView.isHidden = true
-        
+        // 透明度0にして非表示
         self.hairModelListCollectionView.alpha = 0.0
         self.dismissStackView.alpha = 0.0
         // CollectionViewのアニメーション
