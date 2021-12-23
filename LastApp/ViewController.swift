@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     /// モデルの写真一覧を格納する配列
     private let HairModelList = ["palette48","face48","back48", "rotation48", "palette24", "palette36"]
     /// モデルの一覧を格納する配列
-    private let HairModel = ["face", "hair"]
+    private let HairModel = ["face", "men01", "women01"]
     /// 画面幅
     private let width = UIScreen.main.bounds.width
     /// 画面の高さ

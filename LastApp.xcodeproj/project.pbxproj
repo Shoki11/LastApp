@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F31D5052774167D0017CF6B /* women01.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7F31D5042774167D0017CF6B /* women01.usdz */; };
 		7F5104FD273B8F2800BE2ED0 /* HairModelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5104FB273B8F2800BE2ED0 /* HairModelCell.swift */; };
 		7F5104FE273B8F2800BE2ED0 /* HairModelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F5104FC273B8F2800BE2ED0 /* HairModelCell.xib */; };
 		7F510502273B902000BE2ED0 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F510501273B902000BE2ED0 /* Reusable.swift */; };
-		7FA0DD98276B100100795D21 /* hair.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7FA0DD96276B100000795D21 /* hair.usdz */; };
+		7FA0DD98276B100100795D21 /* men01.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7FA0DD96276B100000795D21 /* men01.usdz */; };
 		7FA0DD99276B100100795D21 /* face.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7FA0DD97276B100100795D21 /* face.usdz */; };
 		7FE4CF982737CF4000EF67D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE4CF972737CF4000EF67D7 /* AppDelegate.swift */; };
 		7FE4CF9A2737CF4000EF67D7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE4CF992737CF4000EF67D7 /* SceneDelegate.swift */; };
@@ -21,10 +22,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7F31D5042774167D0017CF6B /* women01.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = women01.usdz; sourceTree = "<group>"; };
 		7F5104FB273B8F2800BE2ED0 /* HairModelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HairModelCell.swift; sourceTree = "<group>"; };
 		7F5104FC273B8F2800BE2ED0 /* HairModelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HairModelCell.xib; sourceTree = "<group>"; };
 		7F510501273B902000BE2ED0 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
-		7FA0DD96276B100000795D21 /* hair.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = hair.usdz; sourceTree = "<group>"; };
+		7FA0DD96276B100000795D21 /* men01.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = men01.usdz; sourceTree = "<group>"; };
 		7FA0DD97276B100100795D21 /* face.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = face.usdz; sourceTree = "<group>"; };
 		7FE4CF942737CF4000EF67D7 /* LastApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LastApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FE4CF972737CF4000EF67D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -88,7 +90,8 @@
 				7FE4CF9B2737CF4000EF67D7 /* ViewController.swift */,
 				7FE4CF9D2737CF4000EF67D7 /* Main.storyboard */,
 				7FA0DD97276B100100795D21 /* face.usdz */,
-				7FA0DD96276B100000795D21 /* hair.usdz */,
+				7FA0DD96276B100000795D21 /* men01.usdz */,
+				7F31D5042774167D0017CF6B /* women01.usdz */,
 				7F5104FF273B8FB400BE2ED0 /* CustomCell */,
 				7F510500273B8FF800BE2ED0 /* Protocol */,
 				7FE4CFA02737CF4200EF67D7 /* Assets.xcassets */,
@@ -155,12 +158,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FA0DD98276B100100795D21 /* hair.usdz in Resources */,
+				7FA0DD98276B100100795D21 /* men01.usdz in Resources */,
 				7FE4CFA42737CF4200EF67D7 /* LaunchScreen.storyboard in Resources */,
 				7FA0DD99276B100100795D21 /* face.usdz in Resources */,
 				7FE4CFA12737CF4200EF67D7 /* Assets.xcassets in Resources */,
 				7FE4CF9F2737CF4000EF67D7 /* Main.storyboard in Resources */,
 				7F5104FE273B8F2800BE2ED0 /* HairModelCell.xib in Resources */,
+				7F31D5052774167D0017CF6B /* women01.usdz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
