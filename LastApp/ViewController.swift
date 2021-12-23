@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     /// モデル一覧を表示するCollecionView
     @IBOutlet private weak var hairModelListCollectionView: UICollectionView!
     
-    // MARK: - Propetys
+    // MARK: - Propeties
     /// モデルの写真一覧を格納する配列
     private let HairModelList = ["palette48","face48","back48", "rotation48", "palette24", "palette36"]
     /// モデルの一覧を格納する配列
