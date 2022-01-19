@@ -22,9 +22,9 @@ class ViewController: UIViewController {
     
     // MARK: - Propeties
     /// モデルの写真一覧を格納する配列
-    private let HairModelList = ["face", "men01", "face48", "back48", "rotation48", "palette36"]
+    private let HairModelList = ["face", "men01", "women01", "face48", "back48", "rotation48"]
     /// モデルの一覧を格納する配列
-    private let HairModel = ["face", "men01", "women01"]
+    private let HairModel = ["face", "men01", "women01", "hair"]
     /// 画面幅
     private let width = UIScreen.main.bounds.width
     /// 画面の高さ
@@ -163,13 +163,14 @@ class ViewController: UIViewController {
         // rotationButtonを非活性
         rotationButton.isEnabled = false
         /// 回す角度
-        let rotation: Float = .pi / 180 * -180
+        let firstRotation: Float = 180 * .pi / 180
+        let secondRotation: Float = 179 * .pi / 180
         // Y軸で180°回転する
-        anchor.move(to: Transform(pitch: 0, yaw: rotation, roll: 0), relativeTo: anchor, duration: 7)
+        anchor.move(to: Transform(pitch: 0, yaw: firstRotation, roll: 0), relativeTo: anchor, duration: 7)
         // 5.6秒後に実行
         DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
             // Y軸で180°回転する
-            anchor.move(to: Transform(pitch: 0, yaw: rotation, roll: 0), relativeTo: anchor, duration: 7)
+            anchor.move(to: Transform(pitch: 0, yaw: secondRotation, roll: 0), relativeTo: anchor, duration: 7)
             // 5.6秒後に実行
             DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
                 // rotationButoonを活性
