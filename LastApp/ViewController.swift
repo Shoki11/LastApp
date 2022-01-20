@@ -52,6 +52,7 @@ class ViewController: UIViewController {
         
         setUp()
         setUpARView()
+        setUpTapGesture()
         showModel(id: modelID)
         setUpHairModelListCollectionView(hairModelListCollectionView)
     }
@@ -68,6 +69,22 @@ class ViewController: UIViewController {
     private func setUpARView() {
         arView.frame = CGRect(x: 0, y: 0, width: width, height: height);
         self.view.addSubview(arView)
+    }
+    
+    /// 画面タップで髪型のUICollectionViewを閉じる
+    private func setUpTapGesture() {
+        /// タップジェスチャー
+        let singleTapGesture = UITapGestureRecognizer(target: self, action: #selector(singleTap(_:)))
+        // シングルタップで反応するように設定
+        singleTapGesture.numberOfTapsRequired = 1
+        // ARViewにジェスチャーを設定
+        arView.addGestureRecognizer(singleTapGesture)
+    }
+    
+    /// シングルタップされた時の処理
+    /// - Parameter gesture: タップジェスチャーオブジェクト
+    @objc private func singleTap(_ gesture: UITapGestureRecognizer) {
+        hideUIStackView()
     }
     
     /// HairModelListCollectionViewの設定
@@ -157,6 +174,15 @@ class ViewController: UIViewController {
         self.present(colorPicker, animated: true, completion: nil)
     }
     
+    /// UIStackViewのHidden処理
+    private func hideUIStackView() {
+        UIView.animate(withDuration: 0.3) {
+            self.dismissStackView.isHidden = true
+            self.hairModelListCollectionView.isHidden = true
+            self.HairCustomStackView.isHidden = false
+        }
+    }
+    
     /// usdzModelの回転
     /// - Parameter anchor: 回転したいanchor
     private func rotationAnchor(anchor: AnchorEntity) {
@@ -204,11 +230,7 @@ class ViewController: UIViewController {
     }
     /// Xボタン
     @IBAction private func tappedDismissButton(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.3) {
-            self.dismissStackView.isHidden = true
-            self.hairModelListCollectionView.isHidden = true
-            self.HairCustomStackView.isHidden = false
-        }
+        hideUIStackView()
     }
 }
 
