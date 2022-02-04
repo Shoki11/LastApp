@@ -21,8 +21,6 @@ class ViewController: UIViewController {
     @IBOutlet private weak var hairModelListCollectionView: UICollectionView!
     
     // MARK: - Propeties
-    /// モデルの写真一覧を格納する配列
-    private let HairModelList = ["face", "men01", "women01", "women02", "face48", "back48", "rotation48"]
     /// モデルの一覧を格納する配列
     private let HairModel = ["face", "men01", "men02", "women01", "women02"]
     /// 画面幅
@@ -264,12 +262,12 @@ extension ViewController {
 extension ViewController: UICollectionViewDataSource {
     // セルの数を返す
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return HairModelList.count
+        return HairModel.count
     }
     /// セルの設定
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HairModelCell.reuseIdentifier, for: indexPath) as! HairModelCell
-        cell.setUpHairModelCell(hairImage: HairModelList[indexPath.row])
+        cell.setUpHairModelCell(hairImage: HairModel[indexPath.row])
         return cell
     }
     // セルがタップされたとき
