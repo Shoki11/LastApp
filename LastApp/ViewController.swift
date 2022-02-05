@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     
     // MARK: - Propeties
     /// モデルの一覧を格納する配列
-    private let HairModel = ["face", "men01", "men02", "women01", "women02"]
+    private let HairModel = ["face", "men01", "men02", "men03", "women01", "women02"]
     /// 画面幅
     private let width = UIScreen.main.bounds.width
     /// 画面の高さ
