@@ -16,6 +16,7 @@
 		7FA0DD99276B100100795D21 /* face.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7FA0DD97276B100100795D21 /* face.usdz */; };
 		7FA2796227AE459900999528 /* men03.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7FA2796127AE459900999528 /* men03.usdz */; };
 		7FD4597027ACC50100DC07A5 /* men02.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7FD4596F27ACC50100DC07A5 /* men02.usdz */; };
+		7FE2F18C27B118CC00F71E57 /* women03.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7FE2F18B27B118CC00F71E57 /* women03.usdz */; };
 		7FE4CF982737CF4000EF67D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE4CF972737CF4000EF67D7 /* AppDelegate.swift */; };
 		7FE4CF9A2737CF4000EF67D7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE4CF992737CF4000EF67D7 /* SceneDelegate.swift */; };
 		7FE4CF9C2737CF4000EF67D7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE4CF9B2737CF4000EF67D7 /* ViewController.swift */; };
@@ -34,6 +35,7 @@
 		7FA0DD97276B100100795D21 /* face.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = face.usdz; sourceTree = "<group>"; };
 		7FA2796127AE459900999528 /* men03.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = men03.usdz; sourceTree = "<group>"; };
 		7FD4596F27ACC50100DC07A5 /* men02.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = men02.usdz; sourceTree = "<group>"; };
+		7FE2F18B27B118CC00F71E57 /* women03.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = women03.usdz; sourceTree = "<group>"; };
 		7FE4CF942737CF4000EF67D7 /* LastApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LastApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FE4CF972737CF4000EF67D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7FE4CF992737CF4000EF67D7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				7FA2796127AE459900999528 /* men03.usdz */,
 				7F31D5042774167D0017CF6B /* women01.usdz */,
 				7F7AE3E227AA5F4C0017FAF3 /* women02.usdz */,
+				7FE2F18B27B118CC00F71E57 /* women03.usdz */,
 				7F5104FF273B8FB400BE2ED0 /* CustomCell */,
 				7F510500273B8FF800BE2ED0 /* Protocol */,
 				7FE4CFA02737CF4200EF67D7 /* Assets.xcassets */,
@@ -171,6 +174,7 @@
 				7FE4CFA42737CF4200EF67D7 /* LaunchScreen.storyboard in Resources */,
 				7FA2796227AE459900999528 /* men03.usdz in Resources */,
 				7FA0DD99276B100100795D21 /* face.usdz in Resources */,
+				7FE2F18C27B118CC00F71E57 /* women03.usdz in Resources */,
 				7FE4CFA12737CF4200EF67D7 /* Assets.xcassets in Resources */,
 				7FD4597027ACC50100DC07A5 /* men02.usdz in Resources */,
 				7FE4CF9F2737CF4000EF67D7 /* Main.storyboard in Resources */,
