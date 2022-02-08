@@ -188,7 +188,7 @@ class ViewController: UIViewController {
         rotationButton.isEnabled = false
         /// 回す角度
         let firstRotation: Float = 180 * .pi / 180
-        let secondRotation: Float = 179.9 * .pi / 180
+        let secondRotation: Float = 179 * .pi / 180
         // Y軸で180°回転する
         anchor.move(to: Transform(pitch: 0, yaw: firstRotation, roll: 0), relativeTo: anchor, duration: 7)
         // 5.6秒後に実行
