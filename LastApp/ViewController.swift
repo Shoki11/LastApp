@@ -22,7 +22,9 @@ class ViewController: UIViewController {
     
     // MARK: - Propeties
     /// モデルの一覧を格納する配列
-    private let HairModel = ["face", "men01", "men02", "men03", "women01", "women03", "women02"]
+    private let hairModelList = ["face", "men01", "men02", "men03", "women01", "women03", "women02"]
+    /// インナーの一覧を格納する配列
+    private let innerModelList = ["face", "men001", "men002", "men003", "women001", "women003", "women002"]
     /// 画面幅
     private let width = UIScreen.main.bounds.width
     /// 画面の高さ
@@ -33,16 +35,22 @@ class ViewController: UIViewController {
     private let arView = ARView()
     /// マネキンのモデルを格納する
     private var faceModel = ModelEntity()
-    /// usdzModlを格納する
+    /// 髪型のモデルを格納する
     private var hairModel = ModelEntity()
+    /// インナーのモデルを格納する
+    private var innerModel = ModelEntity()
     /// anchorのインスタンス
     private var passAnchor = AnchorEntity()
     /// faceModelのマテリアル
     private var faceMaterial = SimpleMaterial(color: .white, roughness: 0.35, isMetallic: false)
     /// hairModelのマテリアル
     private var hairMaterial = SimpleMaterial(color: .black, roughness: 0.35, isMetallic: false)
+    /// innerModelのマテリアル
+    private var innerMaterial = SimpleMaterial(color: .black, roughness: 0.35, isMetallic: false)
     /// Modelのidを保持
-    private var modelID = 0
+    private var modelID: Int = 0
+    /// インナーかどうか判定する
+    private var innerFlag: Bool = false
     
     // MARK: - Methods
     override func viewDidLoad() {
@@ -123,7 +131,8 @@ class ViewController: UIViewController {
         } else {
             // usdzを読み込む
             faceModel = try! Entity.loadModel(named: "face")
-            hairModel = try! Entity.loadModel(named: HairModel[modelID])
+            hairModel = try! Entity.loadModel(named: hairModelList[modelID])
+            innerModel = try! Entity.loadModel(named: innerModelList[modelID])
             // マネキンのusdzのマテリアルの数だけ貼り付ける
             for index in 0 ..< faceModel.model!.mesh.expectedMaterialCount {
                 faceModel.model?.materials[index] = faceMaterial
@@ -132,9 +141,14 @@ class ViewController: UIViewController {
             for index in 0 ..< hairModel.model!.mesh.expectedMaterialCount {
                 hairModel.model?.materials[index] = hairMaterial
             }
+            // インナーのusdzのマテリアルの数だけ貼り付ける
+            for index in 0 ..< innerModel.model!.mesh.expectedMaterialCount {
+                innerModel.model?.materials[index] = innerMaterial
+            }
             // アンカーの子階層にusdzModelを加える
             anchor.addChild(faceModel)
             anchor.addChild(hairModel)
+            anchor.addChild(innerModel)
         }
         // ARViewにアンカーの追加
         arView.scene.anchors.append(anchor)
@@ -164,6 +178,19 @@ class ViewController: UIViewController {
                 // 選択した色を記録
                 hairMaterial = material
             }
+        }
+    }
+    
+    /// innerModelの色変更
+    /// - Parameter color: 設定したい色
+    private func changeInnerColor(color: UIColor) {
+        // usdzのマテリアルの数だけ貼り付ける
+        for index in 0 ..< innerModel.model!.mesh.expectedMaterialCount {
+            // 色、粗さ0、メタリックのシンプルなマテリアル
+            let material = SimpleMaterial(color: color, roughness: 0.35, isMetallic: false)
+            innerModel.model?.materials[index] = material
+            // 選択した色を記録
+            innerMaterial = material
         }
     }
     
@@ -220,6 +247,12 @@ class ViewController: UIViewController {
     }
     /// hairModelの髪色選択ボタン
     @IBAction private func tappedHairColorButton(_ sender: UIButton) {
+        innerFlag = false
+        showColorPicker()
+    }
+    /// innerModelの髪色選択ボタン
+    @IBAction private func tappedChangeInnerColor(_ sender: UIButton) {
+        innerFlag = true
         showColorPicker()
     }
     /// usdzModelの回転
@@ -262,12 +295,12 @@ extension ViewController {
 extension ViewController: UICollectionViewDataSource {
     // セルの数を返す
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return HairModel.count
+        return hairModelList.count
     }
     /// セルの設定
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HairModelCell.reuseIdentifier, for: indexPath) as! HairModelCell
-        cell.setUpHairModelCell(hairImage: HairModel[indexPath.row])
+        cell.setUpHairModelCell(hairImage: hairModelList[indexPath.row])
         return cell
     }
     // セルがタップされたとき
@@ -280,7 +313,11 @@ extension ViewController: UICollectionViewDataSource {
 extension ViewController: UIColorPickerViewControllerDelegate {
     // 色を選択したときの処理
     func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
-        changeModelColor(id: modelID, color: viewController.selectedColor)
+        if innerFlag == true{
+            changeInnerColor(color: viewController.selectedColor)
+        } else {
+            changeModelColor(id: modelID, color: viewController.selectedColor)
+        }
     }
     // カラーピッカーを閉じたときの処理
     func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {}
