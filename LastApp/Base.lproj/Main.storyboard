@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="ipad10_9rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,42 +13,42 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="LastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="820" height="1180"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Ox2-C1-1ei">
-                                <rect key="frame" x="0.0" y="750" width="414" height="96"/>
+                                <rect key="frame" x="0.0" y="1027" width="820" height="117"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Hhb-3a-zBX">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="820" height="58.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="avd-FN-sVW">
-                                                <rect key="frame" x="0.0" y="0.0" width="103.5" height="48"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="205" height="58.5"/>
                                                 <color key="tintColor" red="0.0" green="1" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" image="face48"/>
+                                                <state key="normal" image="hair"/>
                                                 <connections>
                                                     <action selector="tappedHairStyleButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mrW-Od-caC"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fOC-gY-LlK">
-                                                <rect key="frame" x="103.5" y="0.0" width="103.5" height="48"/>
+                                                <rect key="frame" x="205" y="0.0" width="205" height="58.5"/>
                                                 <color key="tintColor" red="0.0" green="1" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" image="palette48"/>
+                                                <state key="normal" image="topPalette"/>
                                                 <connections>
                                                     <action selector="tappedHairColorButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sa6-qU-8H9"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QJO-DQ-j8e">
-                                                <rect key="frame" x="207" y="0.0" width="103.5" height="48"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QJO-DQ-j8e">
+                                                <rect key="frame" x="410" y="0.0" width="205" height="58.5"/>
                                                 <color key="tintColor" red="0.0" green="1" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="innerPalette"/>
                                                 <connections>
                                                     <action selector="tappedChangeInnerColor:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WTM-tf-MFc"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b8i-PB-WvK">
-                                                <rect key="frame" x="310.5" y="0.0" width="103.5" height="48"/>
+                                                <rect key="frame" x="615" y="0.0" width="205" height="58.5"/>
                                                 <color key="tintColor" red="0.0" green="1" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" image="rotation48"/>
                                                 <connections>
@@ -58,10 +58,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="AZA-MY-4Nw">
-                                        <rect key="frame" x="0.0" y="48" width="414" height="48"/>
+                                        <rect key="frame" x="0.0" y="58.5" width="820" height="58.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lx1-Pv-nFB">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="820" height="58.5"/>
                                                 <color key="tintColor" red="0.0" green="1" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" image="back48"/>
                                                 <connections>
@@ -73,7 +73,7 @@
                                 </subviews>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UkB-Ff-Ljb">
-                                <rect key="frame" x="0.0" y="614" width="414" height="120"/>
+                                <rect key="frame" x="0.0" y="891" width="820" height="120"/>
                                 <color key="backgroundColor" white="1" alpha="0.1968929467611755" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="aL2-u1-Jxe"/>
@@ -121,8 +121,9 @@
     </scenes>
     <resources>
         <image name="back48" width="48" height="48"/>
-        <image name="face48" width="48" height="48"/>
-        <image name="palette48" width="48" height="48"/>
+        <image name="hair" width="50.75" height="50.75"/>
+        <image name="innerPalette" width="41.599998474121094" height="58.569999694824219"/>
         <image name="rotation48" width="48" height="48"/>
+        <image name="topPalette" width="40.619998931884766" height="58.569999694824219"/>
     </resources>
 </document>
