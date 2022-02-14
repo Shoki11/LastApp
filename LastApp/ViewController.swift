@@ -15,6 +15,8 @@ class ViewController: UIViewController {
     @IBOutlet private weak var HairCustomStackView: UIStackView!
     /// バツボタンのStackView
     @IBOutlet private weak var dismissStackView: UIStackView!
+    /// InnerColorのボタン
+    @IBOutlet private weak var innerColorButton: UIButton!
     /// Model回転のボタン
     @IBOutlet private weak var rotationButton: UIButton!
     /// モデル一覧を表示するCollecionView
@@ -67,6 +69,7 @@ class ViewController: UIViewController {
     private func setUp() {
         colorPicker.delegate = self
         colorPicker.supportsAlpha = false
+        self.innerColorButton.isEnabled = false
         self.dismissStackView.isHidden = true
         self.hairModelListCollectionView.isHidden = true
     }
@@ -120,6 +123,8 @@ class ViewController: UIViewController {
         modelID = id
         
         if id == 0 {
+            // innerColorButtonを非活性
+            self.innerColorButton.isEnabled = false
             // usdzを読み込む
             faceModel = try! Entity.loadModel(named: "face")
             // マネキンのusdzのマテリアルの数だけ貼り付ける
@@ -129,6 +134,8 @@ class ViewController: UIViewController {
             // アンカーの子階層にusdzModelを加える
             anchor.addChild(faceModel)
         } else {
+            // innerColorButtonを活性
+            self.innerColorButton.isEnabled = true
             // usdzを読み込む
             faceModel = try! Entity.loadModel(named: "face")
             hairModel = try! Entity.loadModel(named: hairModelList[modelID])
