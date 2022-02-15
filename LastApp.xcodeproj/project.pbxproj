@@ -17,6 +17,7 @@
 		7F99117727B37CAD00AC9DCD /* men001.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7F99117627B37CAD00AC9DCD /* men001.usdz */; };
 		7F99117B27B37E4600AC9DCD /* men01.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7F99117A27B37E4600AC9DCD /* men01.usdz */; };
 		7FA0DD99276B100100795D21 /* face.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7FA0DD97276B100100795D21 /* face.usdz */; };
+		7FA1C74A27BBDBF7007BF385 /* men003.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7FA1C74927BBDBF7007BF385 /* men003.usdz */; };
 		7FA2796227AE459900999528 /* men03.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7FA2796127AE459900999528 /* men03.usdz */; };
 		7FD4597027ACC50100DC07A5 /* men02.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7FD4596F27ACC50100DC07A5 /* men02.usdz */; };
 		7FE2F18C27B118CC00F71E57 /* women03.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7FE2F18B27B118CC00F71E57 /* women03.usdz */; };
@@ -39,6 +40,7 @@
 		7F99117627B37CAD00AC9DCD /* men001.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = men001.usdz; sourceTree = "<group>"; };
 		7F99117A27B37E4600AC9DCD /* men01.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = men01.usdz; sourceTree = "<group>"; };
 		7FA0DD97276B100100795D21 /* face.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = face.usdz; sourceTree = "<group>"; };
+		7FA1C74927BBDBF7007BF385 /* men003.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = men003.usdz; sourceTree = "<group>"; };
 		7FA2796127AE459900999528 /* men03.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = men03.usdz; sourceTree = "<group>"; };
 		7FD4596F27ACC50100DC07A5 /* men02.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = men02.usdz; sourceTree = "<group>"; };
 		7FE2F18B27B118CC00F71E57 /* women03.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = women03.usdz; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				7F99117627B37CAD00AC9DCD /* men001.usdz */,
 				7FD4596F27ACC50100DC07A5 /* men02.usdz */,
 				7FA2796127AE459900999528 /* men03.usdz */,
+				7FA1C74927BBDBF7007BF385 /* men003.usdz */,
 				7F31D5042774167D0017CF6B /* women01.usdz */,
 				7F608A2727B20AE3004E239B /* women001.usdz */,
 				7F7AE3E227AA5F4C0017FAF3 /* women02.usdz */,
@@ -193,6 +196,7 @@
 				7F99117727B37CAD00AC9DCD /* men001.usdz in Resources */,
 				7F31D5052774167D0017CF6B /* women01.usdz in Resources */,
 				7F7AE3E327AA5F4C0017FAF3 /* women02.usdz in Resources */,
+				7FA1C74A27BBDBF7007BF385 /* men003.usdz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
