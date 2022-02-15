@@ -121,46 +121,81 @@ class ViewController: UIViewController {
         anchor.orientation = simd_quatf(angle: degree, axis: [0,1,0])
         // modelのidを格納
         modelID = id
-        
+        // idでのモデル判定
         if id == 0 {
-            // innerColorButtonを非活性
-            self.innerColorButton.isEnabled = false
-            // usdzを読み込む
-            faceModel = try! Entity.loadModel(named: "face")
-            // マネキンのusdzのマテリアルの数だけ貼り付ける
-            for index in 0 ..< faceModel.model!.mesh.expectedMaterialCount {
-                faceModel.model?.materials[index] = faceMaterial
-            }
-            // アンカーの子階層にusdzModelを加える
-            anchor.addChild(faceModel)
+            loadFaceModel(anchor: anchor)
+        } else if id == 2 || id == 3 {
+            loadHairModel(anchor: anchor)
         } else {
-            // innerColorButtonを活性
-            self.innerColorButton.isEnabled = true
-            // usdzを読み込む
-            faceModel = try! Entity.loadModel(named: "face")
-            hairModel = try! Entity.loadModel(named: hairModelList[modelID])
-            innerModel = try! Entity.loadModel(named: innerModelList[modelID])
-            // マネキンのusdzのマテリアルの数だけ貼り付ける
-            for index in 0 ..< faceModel.model!.mesh.expectedMaterialCount {
-                faceModel.model?.materials[index] = faceMaterial
-            }
-            // 髪型のusdzのマテリアルの数だけ貼り付ける
-            for index in 0 ..< hairModel.model!.mesh.expectedMaterialCount {
-                hairModel.model?.materials[index] = hairMaterial
-            }
-            // インナーのusdzのマテリアルの数だけ貼り付ける
-            for index in 0 ..< innerModel.model!.mesh.expectedMaterialCount {
-                innerModel.model?.materials[index] = innerMaterial
-            }
-            // アンカーの子階層にusdzModelを加える
-            anchor.addChild(faceModel)
-            anchor.addChild(hairModel)
-            anchor.addChild(innerModel)
+            loadInnerModel(anchor: anchor)
         }
         // ARViewにアンカーの追加
         arView.scene.anchors.append(anchor)
         // 回転メソッドに渡すanchorに格納
         passAnchor = anchor
+    }
+    
+    /// faceModelのロード
+    /// - Parameter anchor: AnchorEntity
+    private func loadFaceModel(anchor: AnchorEntity) {
+        // innerColorButtonを非活性
+        self.innerColorButton.isEnabled = false
+        // usdzを読み込む
+        faceModel = try! Entity.loadModel(named: "face")
+        // マネキンのusdzのマテリアルの数だけ貼り付ける
+        for index in 0 ..< faceModel.model!.mesh.expectedMaterialCount {
+            faceModel.model?.materials[index] = faceMaterial
+        }
+        // アンカーの子階層にusdzModelを加える
+        anchor.addChild(faceModel)
+    }
+    
+    /// hairModelのロード
+    /// - Parameter anchor: AnchorEntity
+    private func loadHairModel(anchor: AnchorEntity) {
+        // innerColorButtonを非活性
+        self.innerColorButton.isEnabled = false
+        // usdzを読み込む
+        faceModel = try! Entity.loadModel(named: "face")
+        hairModel = try! Entity.loadModel(named: hairModelList[modelID])
+        // マネキンのusdzのマテリアルの数だけ貼り付ける
+        for index in 0 ..< faceModel.model!.mesh.expectedMaterialCount {
+            faceModel.model?.materials[index] = faceMaterial
+        }
+        // マネキンのusdzのマテリアルの数だけ貼り付ける
+        for index in 0 ..< hairModel.model!.mesh.expectedMaterialCount {
+            hairModel.model?.materials[index] = hairMaterial
+        }
+        // アンカーの子階層にusdzModelを加える
+        anchor.addChild(faceModel)
+        anchor.addChild(hairModel)
+    }
+    
+    /// innerModelのロード
+    /// - Parameter anchor: AnchorEntity
+    private func loadInnerModel(anchor: AnchorEntity) {
+        // innerColorButtonを活性
+        self.innerColorButton.isEnabled = true
+        // usdzを読み込む
+        faceModel = try! Entity.loadModel(named: "face")
+        hairModel = try! Entity.loadModel(named: hairModelList[modelID])
+        innerModel = try! Entity.loadModel(named: innerModelList[modelID])
+        // マネキンのusdzのマテリアルの数だけ貼り付ける
+        for index in 0 ..< faceModel.model!.mesh.expectedMaterialCount {
+            faceModel.model?.materials[index] = faceMaterial
+        }
+        // 髪型のusdzのマテリアルの数だけ貼り付ける
+        for index in 0 ..< hairModel.model!.mesh.expectedMaterialCount {
+            hairModel.model?.materials[index] = hairMaterial
+        }
+        // インナーのusdzのマテリアルの数だけ貼り付ける
+        for index in 0 ..< innerModel.model!.mesh.expectedMaterialCount {
+            innerModel.model?.materials[index] = innerMaterial
+        }
+        // アンカーの子階層にusdzModelを加える
+        anchor.addChild(faceModel)
+        anchor.addChild(hairModel)
+        anchor.addChild(innerModel)
     }
     
     /// usdzModelの色変更
