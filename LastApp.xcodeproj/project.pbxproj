@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F0E6D2D27BB934E00F37A9D /* women003.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7F0E6D2C27BB934E00F37A9D /* women003.usdz */; };
 		7F31D5052774167D0017CF6B /* women01.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7F31D5042774167D0017CF6B /* women01.usdz */; };
 		7F5104FD273B8F2800BE2ED0 /* HairModelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5104FB273B8F2800BE2ED0 /* HairModelCell.swift */; };
 		7F5104FE273B8F2800BE2ED0 /* HairModelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F5104FC273B8F2800BE2ED0 /* HairModelCell.xib */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7F0E6D2C27BB934E00F37A9D /* women003.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = women003.usdz; sourceTree = "<group>"; };
 		7F31D5042774167D0017CF6B /* women01.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = women01.usdz; sourceTree = "<group>"; };
 		7F5104FB273B8F2800BE2ED0 /* HairModelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HairModelCell.swift; sourceTree = "<group>"; };
 		7F5104FC273B8F2800BE2ED0 /* HairModelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HairModelCell.xib; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				7F608A2727B20AE3004E239B /* women001.usdz */,
 				7F7AE3E227AA5F4C0017FAF3 /* women02.usdz */,
 				7FE2F18B27B118CC00F71E57 /* women03.usdz */,
+				7F0E6D2C27BB934E00F37A9D /* women003.usdz */,
 				7F5104FF273B8FB400BE2ED0 /* CustomCell */,
 				7F510500273B8FF800BE2ED0 /* Protocol */,
 				7FE4CFA02737CF4200EF67D7 /* Assets.xcassets */,
@@ -178,6 +181,7 @@
 			files = (
 				7FE4CFA42737CF4200EF67D7 /* LaunchScreen.storyboard in Resources */,
 				7F608A2827B20AE3004E239B /* women001.usdz in Resources */,
+				7F0E6D2D27BB934E00F37A9D /* women003.usdz in Resources */,
 				7FA2796227AE459900999528 /* men03.usdz in Resources */,
 				7FA0DD99276B100100795D21 /* face.usdz in Resources */,
 				7FE2F18C27B118CC00F71E57 /* women03.usdz in Resources */,
